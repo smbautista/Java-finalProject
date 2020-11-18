@@ -5,13 +5,16 @@
  */
 package utilities;
 
+
+import services.DbConnection;
+
 /**
  *
  * @author 1styrGroupA
  */
-public abstract class Handler {
+public interface CanShowPage {
     
     
-    
+    void showPage(DbConnection dbConnection);
    
 }

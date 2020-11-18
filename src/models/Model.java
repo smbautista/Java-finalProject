@@ -5,13 +5,21 @@
  */
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 1styrGroupA
  */
 public class Model {
 
-    protected String table;
+    protected String name;
+    
+    protected ArrayList<String> attributes;
+    
+    Model(){
+        
+    }
 
     /**
      *
@@ -19,8 +27,14 @@ public class Model {
      * @param table
      */
     
-    protected void find(String attributes,String table) {
+    public String getClassName() {
         
+       return  this.getClass().getSimpleName();
+    }
+    
+    public static String create(String feild){
+        
+        return feild;
     }
     
 }
