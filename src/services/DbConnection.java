@@ -5,11 +5,12 @@
  */
 package services;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -22,21 +23,55 @@ public class DbConnection {
     PreparedStatement preparedStatement;
     ResultSet resultSet;
 
-    String url = "";
+    String driver = "com.mysql.jdbc.Driver";
+    String url = "jdbc:mysql://localhost:3306/computer_inventory?zeroDateTimeBehavior=convertToNull";
     String username = "root";
     String password = "";
 
-    public void connectionect() {
+    public void connect() {
         try {
-            this.connection = (Connection) DriverManager.getConnection(this.url, this.username, this.password);
-            this.statement = (Statement) this.connection.createStatement();
-        } catch (Exception e) {
-            System.out.println("Error connectionecting to database.");
+            Class.forName(this.driver);
+            this.connection = DriverManager.getConnection(this.url, this.username, this.password);
+            this.statement = this.connection.createStatement();
+            System.out.println("Connected to database.");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error connectionecting to database." + e);
         }
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return this.connection;
+    }
+
+    public void close(ResultSet resultSet) {
+        if (resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (Exception e) {
+                System.out.println("Error in closing.../n" + e);
+            }
+        }
+    }
+
+    public void close(Statement statement) {
+
+        if (statement != null) {
+            try {
+                statement.close();
+            } catch (Exception e) {
+                System.out.println("Error in closing.../n" + e);
+            }
+        }
+    }
+
+    public void disconnect() {
+        if (this.connection != null) {
+            try {
+                this.connection.close();
+            } catch (Exception e) {
+                System.out.println("Error in closing.../n" + e);
+            }
+        }
     }
 
 }

@@ -5,6 +5,9 @@
  */
 package coffeshop;
 
+import services.DbConnection;
+import views.auth.Login;
+
 /**
  *
  * @author 1styrGroupA
@@ -15,7 +18,8 @@ public class CoffeShop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new  DbConnection().connect();
+        new Login().setVisible(true);
     }
     
 }
