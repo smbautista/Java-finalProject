@@ -5,16 +5,24 @@
  */
 package views.auth;
 
+import controllers.AuthController;
+import models.User;
+import services.DbConnection;
+import utilities.CanShowPage;
+
 /**
  *
  * @author 1styrGroupA
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements CanShowPage {
+
+    DbConnection dbConnection;
 
     /**
      * Creates new form Login
      */
     public Login() {
+
         initComponents();
     }
 
@@ -231,4 +239,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel submitBtn;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void showPage(DbConnection dbConnection) {
+
+        this.dbConnection = dbConnection;
+        this.setVisible(true);
+    }
 }

@@ -5,11 +5,18 @@
  */
 package view.pages;
 
+import models.User;
+import services.DbConnection;
+import utilities.CanShowPage;
+
 /**
  *
  * @author 1styrGroupA
  */
-public class Dashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame implements CanShowPage {
+
+    private DbConnection dbConnection;
+    private User user;
 
     /**
      * Creates new form Dashboard
@@ -79,7 +86,18 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
+    /*
+    *@param user for user to set
+    */
+    public void setUser(User user){
+        this.user = user;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void showPage(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
+        this.setVisible(true);
+    }
 }

@@ -3,24 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package utilities;
+
+
+import services.DbConnection;
 
 /**
  *
  * @author 1styrGroupA
  */
-public class Model {
-
-    protected String table;
-
-    /**
-     *
-     * @param attributes
-     * @param table
-     */
+public interface CanShowPage {
     
-    protected void find(String attributes,String table) {
-        
-    }
     
+    void showPage(DbConnection dbConnection);
+   
 }

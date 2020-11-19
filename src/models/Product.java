@@ -9,7 +9,7 @@ package models;
  *
  * @author 1styrGroupA
  */
-public class Product extends Model{
+public class Product {
     
     private int id;
     private String name;

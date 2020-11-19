@@ -5,11 +5,16 @@
  */
 package view.pages;
 
+import services.DbConnection;
+import utilities.CanShowPage;
+
 /**
  *
  * @author 1styrGroupA
  */
-public class StoreProduct extends javax.swing.JFrame {
+public class StoreProduct extends javax.swing.JFrame implements CanShowPage {
+
+    DbConnection dbConnection;
 
     /**
      * Creates new form StoreProduct
@@ -82,4 +87,9 @@ public class StoreProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void showPage(DbConnection dbConnection) {
+        this.dbConnection = dbConnection;
+        this.setVisible(true);
+    }
 }
