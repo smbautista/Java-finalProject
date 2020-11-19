@@ -129,6 +129,11 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setText("      Sign In");
         submitBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -184,6 +189,13 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
+
+    private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
+        User user = new User();
+        user.setUsername(username.getText());
+        user.setPasword(password.getText());
+        AuthController.login(user, dbConnection, this);
+    }//GEN-LAST:event_submitBtnMouseClicked
 
     /**
      * @param args the command line arguments
