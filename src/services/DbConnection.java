@@ -24,7 +24,7 @@ public class DbConnection {
     ResultSet resultSet;
 
     String driver = "com.mysql.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/computer_inventory?zeroDateTimeBehavior=convertToNull";
+    String url = "jdbc:mysql://localhost:3306/coffee-shop_database?zeroDateTimeBehavior=convertToNull";
     String username = "root";
     String password = "";
 
