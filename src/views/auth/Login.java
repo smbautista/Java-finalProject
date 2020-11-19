@@ -71,7 +71,7 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coffee Shop Authentication");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\1styrGroupC\\Desktop\\Java Final Project\\bg-1.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dist/images/bg-1.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(77, 38, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,13 +102,13 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 224, 166, 10));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\1styrGroupC\\Desktop\\Java Final Project\\icon-1.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dist/images/icon-1.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 193, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\1styrGroupC\\Desktop\\Java Final Project\\icon-2.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dist/images/icon-2.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 248, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\1styrGroupC\\Desktop\\Java Final Project\\icon-3.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dist/images/icon-3.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 96, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
