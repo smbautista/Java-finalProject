@@ -5,6 +5,8 @@
  */
 package views.auth;
 
+import controllers.AuthController;
+import models.User;
 import services.DbConnection;
 import utilities.CanShowPage;
 
@@ -13,19 +15,16 @@ import utilities.CanShowPage;
  * @author 1styrGroupA
  */
 public class Login extends javax.swing.JFrame implements CanShowPage {
-    
+
     DbConnection dbConnection;
 
     /**
      * Creates new form Login
      */
     public Login() {
-        
+
         initComponents();
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,8 +93,8 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
 
     @Override
     public void showPage(DbConnection dbConnection) {
-      
-       this.dbConnection =  dbConnection;
-       this.setVisible(true);
+
+        this.dbConnection = dbConnection;
+        this.setVisible(true);
     }
 }

@@ -5,6 +5,7 @@
  */
 package view.pages;
 
+import models.User;
 import services.DbConnection;
 import utilities.CanShowPage;
 
@@ -14,7 +15,8 @@ import utilities.CanShowPage;
  */
 public class Dashboard extends javax.swing.JFrame implements CanShowPage {
 
-    DbConnection dbConnection;
+    private DbConnection dbConnection;
+    private User user;
 
     /**
      * Creates new form Dashboard
@@ -83,6 +85,12 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
                 new Dashboard().setVisible(true);
             }
         });
+    }
+    /*
+    *@param user for user to set
+    */
+    public void setUser(User user){
+        this.user = user;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,8 +5,6 @@
  */
 package coffeshop;
 
-import java.sql.Connection;
-import javax.swing.JOptionPane;
 import services.DbConnection;
 import views.auth.Login;
 
@@ -16,19 +14,9 @@ import views.auth.Login;
  */
 public class App {
 
-    DbConnection dbConnection;
-
-    App() {
-        this.dbConnection = new DbConnection();
-    }
-
     public void start() {
         
-        if(this.dbConnection.getConnection() == null) {
-            JOptionPane.showMessageDialog(null, "Server Error" + this.dbConnection.getError());
-        }else{
-            new Login().showPage(this.dbConnection);
-        }
+        new Login().showPage(new DbConnection());
 
     }
 

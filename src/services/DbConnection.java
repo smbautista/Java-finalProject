@@ -51,29 +51,6 @@ public final class DbConnection {
         return this.connection;
     }
 
-    public void close(ResultSet resultSet) {
-        if (resultSet != null) {
-            try {
-                resultSet.close();
-            } catch (Exception e) {
-                this.error = e.toString();
-                System.out.println("Error in closing.../n" + e);
-            }
-        }
-    }
-
-    public void close(Statement statement) {
-
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (Exception e) {
-                this.error = e.toString();
-                System.out.println("Error in closing.../n" + e);
-            }
-        }
-    }
-
     public void disconnect() {
         if (this.connection != null) {
             try {

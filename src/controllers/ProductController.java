@@ -7,15 +7,46 @@ package controllers;
 
 import java.awt.HeadlessException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import models.Product;
+import models.User;
 import services.DbConnection;
+import view.pages.Dashboard;
 
 /**
  *
  * @author 1styrGroupA
  */
 public class ProductController {
+
+    public static void index(User user, DbConnection dbConnection) {
+
+        try {
+            String query = "SELECT * FROM products;";
+            dbConnection.setResultSet(dbConnection.getStatement().executeQuery(query));
+            ArrayList<Product> products = new ArrayList<>();
+            while (dbConnection.getResultSet().next()) {
+                Product product = new Product();
+                product.setId(dbConnection.getResultSet().getInt("id"));
+                product.setName(dbConnection.getResultSet().getString("name"));
+                product.setBrand(dbConnection.getResultSet().getString("brand"));
+                product.setPrice(dbConnection.getResultSet().getDouble("price"));
+                product.setStocks(dbConnection.getResultSet().getInt("stocks"));
+                product.setDescription(dbConnection.getResultSet().getString("description"));
+                products.add(product);
+            }
+            Dashboard dashboard = new Dashboard();
+            dashboard.setUser(user);
+            dashboard.setVisible(true);
+            dbConnection.getStatement().close();
+            dbConnection.getResultSet().close();
+
+        } catch (Exception e) {
+            System.out.println("Something went wrong ....");
+        }
+
+    }
 
     public static void store(Product product, DbConnection dbConnection) {
 
@@ -31,7 +62,9 @@ public class ProductController {
 
             if (dbConnection.getPreparedStatement().executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Product successfully created!");
+                
             }
+            dbConnection.getPreparedStatement().close();
         } catch (SQLException ex) {
             System.out.println("Error" + ex);
         }
