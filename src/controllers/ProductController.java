@@ -38,6 +38,7 @@ public class ProductController {
             }
             Dashboard dashboard = new Dashboard();
             dashboard.setUser(user);
+            dashboard.setProducts(products);
             dashboard.setVisible(true);
             dbConnection.getStatement().close();
             dbConnection.getResultSet().close();
