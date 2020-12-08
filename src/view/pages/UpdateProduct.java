@@ -5,6 +5,8 @@
  */
 package view.pages;
 
+import controllers.ProductController;
+import models.Product;
 import services.DbConnection;
 import utilities.CanShowPage;
 
@@ -15,12 +17,15 @@ import utilities.CanShowPage;
 public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
 
     DbConnection dbConnection;
+    Product product;
+    Dashboard dashboard;
 
     /**
      * Creates new form UpdateProduct
      */
     public UpdateProduct() {
         initComponents();
+        
     }
 
     /**
@@ -39,14 +44,14 @@ public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        description = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        price = new javax.swing.JTextField();
+        brand = new javax.swing.JTextField();
+        stocks = new javax.swing.JTextField();
+        update = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
+        cancel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -79,69 +84,79 @@ public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
         jLabel5.setText("Any Updates?");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(153, 102, 51));
-        jTextField1.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Description");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        description.setBackground(new java.awt.Color(153, 102, 51));
+        description.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        description.setForeground(new java.awt.Color(255, 255, 255));
+        description.setText("Description");
+        description.setBorder(null);
+        description.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                descriptionActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 210, 60));
+        jPanel2.add(description, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 210, 60));
 
-        jTextField2.setBackground(new java.awt.Color(153, 102, 51));
-        jTextField2.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Name");
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        name.setBackground(new java.awt.Color(153, 102, 51));
+        name.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        name.setForeground(new java.awt.Color(255, 255, 255));
+        name.setText("Name");
+        name.setBorder(null);
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 210, 40));
+        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 210, 40));
 
-        jTextField4.setBackground(new java.awt.Color(153, 102, 51));
-        jTextField4.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("Price");
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        price.setBackground(new java.awt.Color(153, 102, 51));
+        price.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        price.setForeground(new java.awt.Color(255, 255, 255));
+        price.setText("Price");
+        price.setBorder(null);
+        price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                priceActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 30));
+        jPanel2.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 30));
 
-        jTextField3.setBackground(new java.awt.Color(153, 102, 51));
-        jTextField3.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("Brand");
-        jTextField3.setBorder(null);
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 20));
+        brand.setBackground(new java.awt.Color(153, 102, 51));
+        brand.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        brand.setForeground(new java.awt.Color(255, 255, 255));
+        brand.setText("Brand");
+        brand.setBorder(null);
+        jPanel2.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 20));
 
-        jTextField5.setBackground(new java.awt.Color(153, 102, 51));
-        jTextField5.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setText("Stocks");
-        jTextField5.setBorder(null);
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 210, 30));
+        stocks.setBackground(new java.awt.Color(153, 102, 51));
+        stocks.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        stocks.setForeground(new java.awt.Color(255, 255, 255));
+        stocks.setText("Stocks");
+        stocks.setBorder(null);
+        jPanel2.add(stocks, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 210, 30));
 
-        jLabel6.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("     Update");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 80, 40));
+        update.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setText("     Update");
+        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
+        jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 80, 40));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 210, -1));
 
-        jLabel7.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("     Cancel");
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jLabel7.setPreferredSize(new java.awt.Dimension(52, 16));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 80, 40));
+        cancel.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setText("     Cancel");
+        cancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cancel.setPreferredSize(new java.awt.Dimension(52, 16));
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
+        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 80, 40));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 210, -1));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 210, 10));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 210, -1));
@@ -164,17 +179,33 @@ public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void descriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_descriptionActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_priceActionPerformed
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        
+        this.product.setName(this.name.getText());
+        this.product.setBrand(this.brand.getText());
+        this.product.setPrice(Double.parseDouble(this.price.getText()));
+        this.product.setStocks(Integer.parseInt(this.stocks.getText()));
+        this.product.setDescription(this.description.getText());
+        
+        ProductController.update(product, dbConnection,this.dashboard);
+        this.dispose();
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -212,13 +243,14 @@ public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField brand;
+    private javax.swing.JLabel cancel;
+    private javax.swing.JTextField description;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
@@ -226,15 +258,31 @@ public class UpdateProduct extends javax.swing.JFrame implements CanShowPage {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextField price;
+    private javax.swing.JTextField stocks;
+    private javax.swing.JLabel update;
     // End of variables declaration//GEN-END:variables
     @Override
     public void showPage(DbConnection dbConnection) {
         this.dbConnection = dbConnection;
+        this.populateFeilds();
         this.setVisible(true);
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    
+    public void setDashboard(Dashboard dashboard){
+        this.dashboard = dashboard;
+    }
+
+    private void populateFeilds() {
+        this.name.setText(this.product.getName());
+        this.brand.setText(this.product.getBrand());
+        this.price.setText(String.valueOf(this.product.getPrice()));
+        this.stocks.setText(String.valueOf(this.product.getStocks()));
+        this.description.setText(this.product.getDescription());   
     }
 }

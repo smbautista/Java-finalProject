@@ -87,6 +87,7 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
         username.setForeground(new java.awt.Color(204, 204, 204));
         username.setText("Username");
         username.setBorder(null);
+        username.setFocusCycleRoot(true);
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
@@ -98,6 +99,7 @@ public class Login extends javax.swing.JFrame implements CanShowPage {
         password.setForeground(new java.awt.Color(204, 204, 204));
         password.setText("Password");
         password.setBorder(null);
+        password.setFocusCycleRoot(true);
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
