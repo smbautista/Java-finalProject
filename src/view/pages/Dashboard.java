@@ -47,7 +47,7 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
         navbar = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        logoutLabel = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         totalProducts = new javax.swing.JPanel();
         totalProductLabel = new javax.swing.JLabel();
@@ -74,12 +74,12 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dist/images/icon-3.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Logout");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                logoutLabelMouseClicked(evt);
             }
         });
 
@@ -93,7 +93,7 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 706, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(logoutLabel)
                 .addGap(34, 34, 34))
         );
         navbarLayout.setVerticalGroup(
@@ -106,7 +106,7 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel3))))
+                            .addComponent(logoutLabel))))
                 .addContainerGap())
         );
 
@@ -270,7 +270,7 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
         StoreProduct store = new StoreProduct();
         store.setDashboard(this);
-        store.showPage(dbConnection);
+        store.showPage(this.dbConnection);
     }//GEN-LAST:event_addProductActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -300,13 +300,14 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         DeleteProduct dp = new DeleteProduct();
+        dp.setDashboard(this);
         dp.showPage(this.dbConnection);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
         this.dispose();
         new Login().setVisible(true);
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_logoutLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -360,10 +361,10 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel main;
     private javax.swing.JPanel navbar;
     private javax.swing.JTextField search;
@@ -403,7 +404,6 @@ public class Dashboard extends javax.swing.JFrame implements CanShowPage {
             return row;
         }).forEach(this.model::addRow);
         this.table.setModel(this.model);
-        System.out.println("make table content");
     }
 
     public void updateProducts() {

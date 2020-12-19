@@ -80,14 +80,16 @@ public class ProductController {
         }
     }
 
-    public static int destroy(int id, DbConnection dbConnection) {
+    public static void destroy(int id, DbConnection dbConnection,Dashboard dashboard) {
         try {
             String query = "DELETE FROM products WHERE id = " + String.valueOf(id);
             dbConnection.setStatement(dbConnection.getConnection().createStatement());
-            return dbConnection.getStatement().executeUpdate(query);
+            if (dbConnection.getStatement().executeUpdate(query) > 0) {
+                JOptionPane.showMessageDialog(null, "Product successfully Deleted!");
+                dashboard.updateProducts();
+            }
         } catch (SQLException | HeadlessException e) {
             System.out.println("Error" + e);
-            return 0;
         }
     }
 

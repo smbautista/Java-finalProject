@@ -17,6 +17,7 @@ import utilities.CanShowPage;
 public class DeleteProduct extends javax.swing.JFrame implements CanShowPage {
 
     DbConnection dbConnection;
+    Dashboard dashboard;
 
     /**
      * Creates new form DeleteProduct
@@ -96,16 +97,13 @@ public class DeleteProduct extends javax.swing.JFrame implements CanShowPage {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        int result = ProductController.destroy(
+         ProductController.destroy(
                 Integer.parseInt(this.id.getText()),
-                this.dbConnection
+                this.dbConnection,
+                this.dashboard
         );
 
-        if (result > 0) {
-            JOptionPane.showMessageDialog(null, "Product deleted Successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Product ID is not found.");
-        }
+        this.dispose();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void camceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camceBtnActionPerformed
@@ -158,5 +156,9 @@ public class DeleteProduct extends javax.swing.JFrame implements CanShowPage {
     public void showPage(DbConnection dbConnection) {
         this.dbConnection = dbConnection;
         this.setVisible(true);
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
     }
 }
